@@ -1,0 +1,7 @@
+{
+  "name": "delomos/read",
+  "type": "wordpress-theme",
+  "require": {
+    "composer/installers": "~1.0.0"
+  }
+}
