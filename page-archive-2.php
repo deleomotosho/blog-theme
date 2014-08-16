@@ -93,6 +93,22 @@ Template Name: Archive 2
 										</ul>
 								    </div>
 								    <!-- end Archives by category -->
+									
+								    <div class="post-list archives-list archives-tag archives-by-tag">
+										<h2><?php echo __( 'Archives by tag', 'read' ); ?></h2>
+										
+										<ul>
+											<?php
+												$tags = get_tags();
+												
+												foreach ( $tags as $tag )
+												{
+													echo '<li><a href="' . get_tag_link( $tag->term_id ) . '">' . $tag->name . '</a></li> ';
+												}
+											?>											
+										</ul>
+								    </div>
+								    <!-- end Archives by tag -->
 								    
 								    <div class="post-list archives-list archives-tag archives-by-format">
 										<h2><?php echo __( 'Archives by format', 'read' ); ?></h2>

@@ -1,8 +1,13 @@
 <form class="sh-wrap">
+
 	<br>
 	<label for="sh_list">Shortcodes:</label>
 	<br>
+	
 	<select id="sh_list" name="sh_list" class="widefat sh-list" style="width: 50%;">
+	
+		<option></option>
+		
 		<option value="row">Row</option>
 		<option value="column">Column</option>
 		<option value="tabs">Tabs</option>
@@ -38,8 +43,10 @@
 		<option value="lightbox_audio">Lightbox Audio</option>
 		<option value="lightbox_video">Lightbox Video</option>
 		<option value="lightbox_image">Lightbox Image</option>
+		
 	</select>
 	<!-- end shortcodes -->
+	
 	<br>
 	<br>
 	
@@ -660,10 +667,12 @@
 	
 	
 	<button type="button" class="button button-primary button-large btn-sh-insert">Insert Shortcode</button>
+
 </form>
 
 
 <script>
+
 	jQuery(document).ready( function($)
 	{
 		var sh_selected = 'row';
@@ -913,11 +922,25 @@
 			// add to editor
 			if ( window.tinyMCE )
 			{
-				window.tinyMCE.execInstanceCommand( 'content', 'mceInsertContent', false, sh_out );
+				var tmce_ver = window.tinyMCE.majorVersion;
+				
+				if ( tmce_ver < "4" )
+				{
+					window.tinyMCE.execInstanceCommand( 'content', 'mceInsertContent', false, sh_out );
+				}
+				else
+				{
+					parent.tinyMCE.execCommand( 'mceInsertContent', false, sh_out );
+				}
+				// end if
+				
 				tb_remove();
 			}
 			// end add to editor
+		
 		});
 		// end insert button
+	
 	});
+
 </script>

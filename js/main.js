@@ -1,3 +1,10 @@
+/*
+	Name: Read
+	Description: Responsive WordPress Theme
+	Author: Pixelwars
+*/
+
+
 (function ($) {
 
 	/* DOCUMENT LOAD */
@@ -491,6 +498,7 @@
 		//**********************************
 		// BLOG MASONRY
 		// cache container
+		var blogAnimEngine = $.browser.mozilla && $.browser.version > '2' ? "jquery" : "best-available";
 		var $containerBlog = $('.blog-masonry');
 		if($containerBlog.length) {
 			
@@ -504,7 +512,8 @@
 				// initialize isotope
 				$containerBlog.isotope({
 				  itemSelector : '.hentry',
-				  layoutMode : 'masonry'
+				  layoutMode : 'masonry',
+				  animationEngine : blogAnimEngine
 				});
 				
 				setTimeout(function() { setMasonryBlog(); }, 1000);
@@ -555,7 +564,7 @@
 				var itemWidth = (Math.floor( containerW / columns ) * 100 / containerW) * multiplier ;
 				$(this).css( 'width', itemWidth + '%' );
 			});
-			if($containerBlog.isotope()) {
+			if($containerBlog.isotope({ animationEngine : blogAnimEngine })) {
 					columnWidth = Math.floor( containerW / columns );
 					$containerBlog.isotope( 'reLayout' ).isotope( 'option', { masonry: { columnWidth: columnWidth } } );
 				}
@@ -612,7 +621,7 @@
 		//**********************************
 		/* MEDIAELEMENT.JS - self hosted html5 video and audio player */
 		if($('video,audio').length) {
-			$('video,audio').mediaelementplayer({});	
+			// $('video,audio').mediaelementplayer({});	
 		}
 		//**********************************
 		
@@ -640,6 +649,7 @@
 				});
 		}
 		//*************************************
+		
 		
 	});
 	/* DOCUMENT LOAD */

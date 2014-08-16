@@ -411,6 +411,8 @@
 						'Nosifer' => 'Nosifer',
 						'Nothing You Could Do' => 'Nothing You Could Do',
 						'Noticia Text' => 'Noticia Text',
+						'Noto Sans' => 'Noto Sans',
+						'Noto Serif' => 'Noto Serif',
 						'Nova Cut' => 'Nova Cut',
 						'Nova Flat' => 'Nova Flat',
 						'Nova Mono' => 'Nova Mono',

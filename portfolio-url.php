@@ -44,7 +44,6 @@
 														<?php
 															$pf_short_description = stripcslashes( get_option( $post->ID . 'pf_short_description' ) );
 														?>
-														
 														<p class="category"><?php echo $pf_short_description; ?></p>
 													</div>
 													<!-- end .portfolio-info -->
@@ -53,7 +52,6 @@
 														$pf_direct_url = stripcslashes( get_option( $post->ID . 'pf_direct_url' ) );
 														$pf_link_new_tab = get_option( $post->ID . 'pf_link_new_tab' );
 													?>
-													
 													<a <?php if ( $pf_link_new_tab ) { echo 'target="_blank"'; } ?> href="<?php echo $pf_direct_url; ?>"></a>
 												</div>
 												<!-- end .mask -->

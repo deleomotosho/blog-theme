@@ -35,6 +35,7 @@
 						?>
 					</span>
 				</h1>
+				<!-- end .page-title -->
 			</header>
 			<!-- end .page-header -->
 			

@@ -29,10 +29,8 @@
 					}
 				?>
 			</h2>
-			<!-- end .nav-tab-wrapper -->
 		<?php
 	}
-	// end create_tabs
 
 /* ============================================================================================================================================ */
 
@@ -257,7 +255,7 @@
 															</td>
 															
 															<td class="option-right">
-																Select.
+																Select logo type.
 															</td>
 														</tr>
 														
@@ -283,7 +281,7 @@
 															</td>
 															
 															<td class="option-right">
-																Select.
+																Site title.
 															</td>
 														</tr>
 														
@@ -326,7 +324,7 @@
 															</td>
 															
 															<td class="option-right">
-																Select.
+																In a few words, explain what this site is about.
 															</td>
 														</tr>
 														
@@ -352,7 +350,7 @@
 															</td>
 															
 															<td class="option-right">
-																(274x63)px PNG image.
+																A PNG image.
 															</td>
 														</tr>
 														
@@ -390,7 +388,7 @@
 															</td>
 															
 															<td class="option-right">
-																Minimum (145x145)px PNG image that will represent your website's favicon for Apple devices such as the iPod Touch, iPhone and iPad, as well as some Android devices.
+																A PNG image that will represent your website's favicon for Apple devices such as the iPod Touch, iPhone and iPad, as well as some Android devices.
 															</td>
 														</tr>
 														
@@ -417,7 +415,7 @@
 															</td>
 															
 															<td class="option-right">
-																<img src="http://oi44.tinypic.com/im8qwk.jpg">
+																
 															</td>
 														</tr>
 													</table>
@@ -704,7 +702,28 @@
 															</td>
 															
 															<td class="option-right">
-																Select blog layout.
+																Select layout type.
+															</td>
+														</tr>
+														
+														<tr>
+															<td class="option-left">
+																<h4>Category Archive Type</h4>
+																
+																<?php
+																	$category_archive_type = get_option( 'category_archive_type', 'Masonry' );
+																?>
+																<select id="category_archive_type" name="category_archive_type" style="width: 100%;">
+																	<option <?php if ( $category_archive_type == 'Sidebar' ) { echo 'selected="selected"'; } ?>>Sidebar</option>
+																	
+																	<option <?php if ( $category_archive_type == 'No Sidebar' ) { echo 'selected="selected"'; } ?>>No Sidebar</option>
+																	
+																	<option <?php if ( $category_archive_type == 'Masonry' ) { echo 'selected="selected"'; } ?>>Masonry</option>
+																</select>
+															</td>
+															
+															<td class="option-right">
+																Select layout type.
 															</td>
 														</tr>
 														
@@ -1189,13 +1208,18 @@
 																<select id="sidebars" name="sidebars" style="width: 100%;" size="10" disabled="disabled">
 																	<?php
 																		$sidebars_with_commas = get_option( 'sidebars_with_commas' );
-																	
-																		$sidebars = preg_split("/[\s]*[,][\s]*/", $sidebars_with_commas);
-
-																		foreach ( $sidebars as $sidebar_name )
+																		
+																		if ( $sidebars_with_commas != "" )
 																		{
-																			echo '<option>' . $sidebar_name . '</option>';
+																			$sidebars = preg_split("/[\s]*[,][\s]*/", $sidebars_with_commas);
+
+																			foreach ( $sidebars as $sidebar_name )
+																			{
+																				echo '<option>' . $sidebar_name . '</option>';
+																			}
+																			// end for
 																		}
+																		// end if
 																	?>
 																</select>
 															</td>
@@ -1240,6 +1264,7 @@
 													<?php
 														wp_nonce_field( "settings-page" );
 													?>
+													
 													<table>
 														<tr>
 															<td class="option-left">
@@ -1250,13 +1275,16 @@
 																?>
 																<select id="theme_og_protocol" name="theme_og_protocol" style="width: 100%;">
 																	<option <?php if ( $theme_og_protocol == 'Yes' ) { echo 'selected="selected"'; } ?>>Yes</option>
+																	
 																	<option <?php if ( $theme_og_protocol == 'No' ) { echo 'selected="selected"'; } ?>>No</option>
 																</select>
 															</td>
+															
 															<td class="option-right">
-																Enable or disable built-in open graph functionality.
+																Enable built-in open graph functionality.
 															</td>
 														</tr>
+														
 														<tr>
 															<td class="option-left">
 																<h4>Theme SEO Fields</h4>
@@ -1266,66 +1294,83 @@
 																?>
 																<select id="theme_seo_fields" name="theme_seo_fields" style="width: 100%;">
 																	<option <?php if ( $theme_seo_fields == 'Yes' ) { echo 'selected="selected"'; } ?>>Yes</option>
+																	
 																	<option <?php if ( $theme_seo_fields == 'No' ) { echo 'selected="selected"'; } ?>>No</option>
 																</select>
 															</td>
+															
 															<td class="option-right">
 																Enable or disable built-in seo fields.
 															</td>
 														</tr>
+														
 														<tr>
 															<td class="option-left">
 																<h4>Description</h4>
+																
 																<?php
 																	$site_description = stripcslashes( get_option( 'site_description', "" ) );
 																?>
 																<textarea id="site_description" name="site_description" style="outline: none; width: 100%;" rows="3" cols="50"><?php echo $site_description; ?></textarea>
 															</td>
+															
 															<td class="option-right">
 																Used in front page.
 															</td>
 														</tr>
+														
 														<tr>
 															<td class="option-left">
 																<h4>Keywords</h4>
+																
 																<?php
 																	$site_keywords = stripcslashes( get_option( 'site_keywords', "" ) );
 																?>
 																<textarea id="site_keywords" name="site_keywords" style="outline: none; width: 100%;" rows="3" cols="50"><?php echo $site_keywords; ?></textarea>
 															</td>
+															
 															<td class="option-right">
 																Separate keywords with commas.
 															</td>
 														</tr>
+														
 														<tr>
 															<td class="option-left">
 																<h4>Tracking Code (/head)</h4>
+																
 																<?php
 																	$tracking_code_head = stripcslashes( get_option( 'tracking_code_head' ) );
 																?>
 																<textarea id="tracking_code_head" name="tracking_code_head" class="code2" rows="8" cols="50"><?php echo $tracking_code_head; ?></textarea>
 															</td>
+															
 															<td class="option-right">
 																Paste your Google Analytics (or other) tracking code here. It will be inserted before the closing head tag.
 															</td>
 														</tr>
+														
 														<tr>
 															<td class="option-left">
 																<h4>Tracking Code (/body)</h4>
+																
 																<?php
 																	$tracking_code = stripcslashes( get_option( 'tracking_code' ) );
 																?>
 																<textarea id="tracking_code" name="tracking_code" class="code2" rows="8" cols="50"><?php echo $tracking_code; ?></textarea>
 															</td>
+															
 															<td class="option-right">
 																Paste your Google Analytics (or other) tracking code here. It will be inserted before the closing body tag.
 															</td>
 														</tr>
+														
 														<tr>
 															<td class="option-left">
 																<input type="submit" name="submit" class="button button-primary button-large" value="Save Changes">
+																
 																<input type="hidden" name="settings-submit" value="Y">
 															</td>
+															
 															<td class="option-right">
 																
 															</td>
@@ -1524,6 +1569,7 @@
 				case 'blog' :
 					
 					update_option( 'blog_type', $_POST['blog_type'] );
+					update_option( 'category_archive_type', $_POST['category_archive_type'] );
 					update_option( 'post_sidebar', $_POST['post_sidebar'] );
 					update_option( 'theme_excerpt', $_POST['theme_excerpt'] );
 					update_option( 'pagination', $_POST['pagination'] );
@@ -1562,7 +1608,9 @@
 					
 					if ( esc_attr( $_POST['new_sidebar_name'] ) != "" )
 					{
-						if ( get_option( 'sidebars_with_commas' ) == "" )
+						$sidebars_with_commas = get_option( 'sidebars_with_commas', "" );
+						
+						if ( $sidebars_with_commas == "" )
 						{
 							update_option( 'sidebars_with_commas', esc_attr( $_POST['new_sidebar_name'] ) );
 						}
@@ -1570,7 +1618,9 @@
 						{
 							update_option( 'sidebars_with_commas', get_option( 'sidebars_with_commas' ) . ',' . esc_attr( $_POST['new_sidebar_name'] ) );
 						}
+						// end if
 					}
+					// end if
 				
 				break;
 				

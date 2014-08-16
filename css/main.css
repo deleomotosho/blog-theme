@@ -1,6 +1,6 @@
 /*
 	Name: Read WP
-	Description: Responsive WordPress Theme
+	Description: Responsive Theme
 	Author: Pixelwars
 */
 
@@ -39,8 +39,8 @@ h1.site-title, h1.site-title a { font-family:"UnifrakturMaguntia", Georgia, seri
 /* -------------------------------------------- */
 /* COLORS */
 /* Text Selection */
-::selection { text-shadow:none; color:#333; background:#FF9; }
-::-moz-selection { text-shadow:none; color:#333; background:#FF9; }
+::selection { text-shadow:none; color:#333; background:#FFFFCF; }
+::-moz-selection { text-shadow:none; color:#333; background:#FFFFCF; }
 body { color:#444; }
 
 
@@ -512,7 +512,7 @@ input[type=submit].grass:active, input[type=button].grass:active, button.grass:a
 .entry-content { padding: .250em 0 1.250em 0; }
 .page .entry-content { padding-top: 1em; }
 .entry-meta { text-align: center; }
-.entry-content a.more-link { display:block; max-width:18.75em; text-align:center; margin:2.5em auto 0 auto; padding:0.5em 0 0.4em 0; color:#444; font-weight:400; font-size:.925em; background:none; border-bottom:1px dotted #ccc; letter-spacing:2px; }
+.entry-content a.more-link { display:block; max-width:18.75em; text-align:center; margin:2.5em auto 0 auto; padding:0.5em 0 0.4em 0; color:#444; font-weight:400; font-size:.85em; background:none; border-bottom:1px dotted #ccc; letter-spacing:2px; }
 .entry-meta .comments-link:before { content: "\f0e5"; font-size:1em; margin-left: .6em; margin-right: -0.8em; display:inline-block; }
 .featured-image { text-align:center; }
 .site-content h1 a:active { border-bottom:1px dotted #ccc; }
@@ -827,6 +827,9 @@ a.loadmore { display:block; position:relative; margin: 3em auto 0 auto; max-widt
 .fb-like > span { width: 450px !important; }
 /* pinterest iframe fix */
 #page ~ iframe { display: none; }
+/* IE and firefox : facebook like fix */
+.share-wrap .fb_iframe_widget > span,
+.share-wrap .fb_iframe_widget iframe { height: 20px !important; width: 78px !important; }
 
 /* BLOG MASONRY */
 .blog-masonry { min-height: 200px; padding-bottom: 2em; }
@@ -837,7 +840,7 @@ a.loadmore { display:block; position:relative; margin: 3em auto 0 auto; max-widt
 .blog-masonry .hentry .entry-content { border-bottom: 2px solid #444; }
 .blog-masonry .entry-meta { display: none; }
 .blog-masonry .hentry h1 { font-size: 1.1em; }
-.blog-masonry .hentry p { font-size: 0.9em; }
+.blog-masonry .hentry p { font-size: 0.925em; }
 .blog-masonry .format-quote blockquote { padding: 0; font-size: 1.2em; }
 .blog-masonry .format-aside .entry-content { margin-bottom: 30px; }
 .blog-masonry .flex-direction-nav { display: none; }
@@ -856,6 +859,11 @@ a.loadmore { display:block; position:relative; margin: 3em auto 0 auto; max-widt
 }
 @media (min-width: 1600px) { 
 	#secondary .widget { padding-left:6em; }
+}
+@media screen and (min-width: 768px) {
+    .blog-single .post .entry-content > p {
+		font-size: 18px;
+		}
 }
 
 /* tablets */
@@ -920,7 +928,6 @@ a.loadmore { display:block; position:relative; margin: 3em auto 0 auto; max-widt
 	.project-action { padding-bottom:.4em; }
 	.project-action .button { margin-bottom:1em; }
 	blockquote { padding-left:1em; padding-right:1em; }
-	/* blockquote::before { top: -0.3em; font-size: 4em; } */
 	blockquote:before { top: -0.3em; font-size: 90px; }
 	
 	/* Home Alternate */

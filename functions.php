@@ -1,4 +1,28 @@
-﻿<?php
+<?php
+
+/* ============================================================================================================================================= */
+
+	function theme_enqueue_login()
+	{
+		wp_enqueue_script( 'jquery' );
+	}
+	
+	add_action( 'login_enqueue_scripts', 'theme_enqueue_login' );
+
+/* ============================================================================================================================================= */
+
+	function your_admin_enqueue_scripts()
+	{
+		wp_enqueue_style( 'adminstyle', get_template_directory_uri() . '/admin/adminstyle.css' );
+		wp_enqueue_style( 'colorpicker', get_template_directory_uri() . '/admin/colorpicker/colorpicker.css' );
+		wp_enqueue_style( 'thickbox' );
+		
+		
+		wp_enqueue_script( 'thickbox' );
+		wp_enqueue_script( 'media-upload' );
+	}
+	
+	add_action( 'admin_enqueue_scripts', 'your_admin_enqueue_scripts' );
 
 /* ============================================================================================================================================= */
 
@@ -28,85 +52,46 @@
 		if ( $extra_char_set == false ) { $subset = ""; } else { $subset = substr( $subset, 0, -1 ); }
 		
 		
-		// Register style
-		wp_register_style( 'unifrakturmaguntia', 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia' . $subset, null, null );
-		wp_register_style( 'coustard', 'http://fonts.googleapis.com/css?family=Coustard' . $subset, null, null );
-		wp_register_style( 'lora', 'http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' . $subset, null, null );
-		
-		wp_register_style( 'print', get_template_directory_uri() . '/css/print.css', null, null, 'print' );
-		wp_register_style( 'grid', get_template_directory_uri() . '/css/grid.css', null, null );
-		wp_register_style( 'normalize', get_template_directory_uri() . '/css/normalize.css', null, null );
-		wp_register_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', null, null );
-		wp_register_style( 'google-code-prettify', get_template_directory_uri() . '/js/google-code-prettify/prettify.css', null, null );
-		wp_register_style( 'uniform', get_template_directory_uri() . '/css/uniform.default.css', null, null );
-		wp_register_style( 'flexslider', get_template_directory_uri() . '/css/flexslider.css', null, null );
-		wp_register_style( 'mediaelementplayer', get_template_directory_uri() . '/js/mediaelement/mediaelementplayer.css', null, null );
-		wp_register_style( 'gamma-gallery', get_template_directory_uri() . '/css/gamma-gallery.css', null, null );
-		wp_register_style( 'main', get_template_directory_uri() . '/css/main.css', null, null );
-		wp_register_style( 'fancybox', get_template_directory_uri() . '/css/jquery.fancybox-1.3.4.css', null, null );
-		wp_register_style( 'wp-fix', get_template_directory_uri() . '/css/wp-fix.css', null, null );
-		
 		// Enqueue style
-		wp_enqueue_style( 'unifrakturmaguntia' );
-		wp_enqueue_style( 'coustard' );
-		wp_enqueue_style( 'lora' );
+		wp_enqueue_style( 'unifrakturmaguntia', 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia' . $subset, null, null );
+		wp_enqueue_style( 'coustard', 'http://fonts.googleapis.com/css?family=Coustard' . $subset, null, null );
+		wp_enqueue_style( 'lora', 'http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' . $subset, null, null );
+		wp_enqueue_style( 'print', get_template_directory_uri() . '/css/print.css', null, null, 'print' );
+		wp_enqueue_style( 'grid', get_template_directory_uri() . '/css/grid.css', null, null );
+		wp_enqueue_style( 'normalize', get_template_directory_uri() . '/css/normalize.css', null, null );
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', null, null );
+		wp_enqueue_style( 'google-code-prettify', get_template_directory_uri() . '/js/google-code-prettify/prettify.css', null, null );
+		wp_enqueue_style( 'uniform', get_template_directory_uri() . '/css/uniform.default.css', null, null );
+		wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/css/flexslider.css', null, null );
+		//wp_enqueue_style( 'mediaelementplayer', get_template_directory_uri() . '/js/mediaelement/mediaelementplayer.css', null, null );
+		wp_enqueue_style( 'gamma-gallery', get_template_directory_uri() . '/css/gamma-gallery.css', null, null );
+		wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.css', null, null );
+		wp_enqueue_style( 'fancybox', get_template_directory_uri() . '/css/jquery.fancybox-1.3.4.css', null, null );
+		wp_enqueue_style( 'wp-fix', get_template_directory_uri() . '/css/wp-fix.css', null, null );
 		
-		wp_enqueue_style( 'print' );
-		wp_enqueue_style( 'grid' );
-		wp_enqueue_style( 'normalize' );
-		wp_enqueue_style( 'font-awesome' );
-		wp_enqueue_style( 'google-code-prettify' );
-		wp_enqueue_style( 'uniform' );
-		wp_enqueue_style( 'flexslider' );
-		wp_enqueue_style( 'mediaelementplayer' );
-		wp_enqueue_style( 'gamma-gallery' );
-		wp_enqueue_style( 'main' );
-		wp_enqueue_style( 'fancybox' );
-		wp_enqueue_style( 'wp-fix' );
-		
-		
-		// Register script
-		wp_register_script( 'detectmobilebrowser', get_template_directory_uri() . '/js/detectmobilebrowser.js', null, null, true );
-		wp_register_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.js', null, null, true );
-		wp_register_script( 'imagesloaded', get_template_directory_uri() . '/js/jquery.imagesloaded.min.js', null, null, true );
-		wp_register_script( 'fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', null, null, true );
-		wp_register_script( 'google-code-prettify', get_template_directory_uri() . '/js/google-code-prettify/prettify.js', null, null, true );
-		wp_register_script( 'uniform', get_template_directory_uri() . '/js/jquery.uniform.min.js', null, null, true );
-		wp_register_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', null, null, true );
-		wp_register_script( 'mediaelement-and-player', get_template_directory_uri() . '/js/mediaelement/mediaelement-and-player.min.js', null, null, true );
-		wp_register_script( 'isotope', get_template_directory_uri() . '/js/jquery.isotope.min.js', null, null, true );
-		wp_register_script( 'fancybox', get_template_directory_uri() . '/js/jquery.fancybox-1.3.4.pack.js', null, null, true );
-		wp_register_script( 'masonry', get_template_directory_uri() . '/js/jquery.masonry.min.js', null, null, true );
-		wp_register_script( 'history', get_template_directory_uri() . '/js/jquery.history.js', null, null, true );
-		wp_register_script( 'js-url', get_template_directory_uri() . '/js/js-url.min.js', null, null, true );
-		wp_register_script( 'jquerypp-custom', get_template_directory_uri() . '/js/jquerypp.custom.js', null, null, true );
-		wp_register_script( 'gamma', get_template_directory_uri() . '/js/gamma.js', null, null, true );
-		wp_register_script( 'main', get_template_directory_uri() . '/js/main.js', null, null, true );
-		wp_register_script( 'validate', get_template_directory_uri() . '/js/jquery.validate.min.js', null, null, true );
-		wp_register_script( 'send-mail', get_template_directory_uri() . '/js/send-mail.js', null, null, true );
 		
 		// Enqueue script
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'detectmobilebrowser' );
-		wp_enqueue_script( 'modernizr' );
-		wp_enqueue_script( 'imagesloaded' );
-		wp_enqueue_script( 'fitvids' );
-		wp_enqueue_script( 'google-code-prettify' );
-		wp_enqueue_script( 'uniform' );
-		wp_enqueue_script( 'flexslider' );
-		wp_enqueue_script( 'mediaelement-and-player' );
-		wp_enqueue_script( 'isotope' );
-		wp_enqueue_script( 'fancybox' );
-		wp_enqueue_script( 'masonry' );
-		wp_enqueue_script( 'history' );
-		wp_enqueue_script( 'js-url' );
-		wp_enqueue_script( 'jquerypp-custom' );
-		wp_enqueue_script( 'gamma' );
-		wp_enqueue_script( 'main' );
-		wp_enqueue_script( 'validate' );
-		wp_enqueue_script( 'send-mail' );
+		wp_enqueue_script( 'detectmobilebrowser', get_template_directory_uri() . '/js/detectmobilebrowser.js', null, null, true );
+		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.js', null, null, true );
+		wp_enqueue_script( 'imagesloaded', get_template_directory_uri() . '/js/jquery.imagesloaded.min.js', null, null, true );
+		wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/js/jquery.fitvids.js', null, null, true );
+		wp_enqueue_script( 'google-code-prettify', get_template_directory_uri() . '/js/google-code-prettify/prettify.js', null, null, true );
+		wp_enqueue_script( 'uniform', get_template_directory_uri() . '/js/jquery.uniform.min.js', null, null, true );
+		wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', null, null, true );
+		// wp_enqueue_script( 'mediaelement-and-player', get_template_directory_uri() . '/js/mediaelement/mediaelement-and-player.min.js', null, null, true );
+		wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/jquery.isotope.min.js', null, null, true );
+		wp_enqueue_script( 'fancybox', get_template_directory_uri() . '/js/jquery.fancybox-1.3.4.pack.js', null, null, true );
+		wp_deregister_script( 'masonry' );
+		wp_enqueue_script( 'masonry', get_template_directory_uri() . '/js/jquery.masonry.min.js', null, null, true );
+		wp_enqueue_script( 'history', get_template_directory_uri() . '/js/jquery.history.js', null, null, true );
+		wp_enqueue_script( 'js-url', get_template_directory_uri() . '/js/js-url.min.js', null, null, true );
+		wp_enqueue_script( 'jquerypp-custom', get_template_directory_uri() . '/js/jquerypp.custom.js', null, null, true );
+		wp_enqueue_script( 'gamma', get_template_directory_uri() . '/js/gamma.js', null, null, true );
+		wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', null, null, true );
+		wp_enqueue_script( 'validate', get_template_directory_uri() . '/js/jquery.validate.min.js', null, null, true );
+		wp_enqueue_script( 'send-mail', get_template_directory_uri() . '/js/send-mail.js', null, null, true );
 	}
-	// end theme_enqueue
 
 /* ============================================================================================================================================= */
 
@@ -126,7 +111,6 @@
 			require_once( $locale_file );
 		}
 	}
-	// end my_theme_setup
 	
 	add_action( 'after_setup_theme', 'my_theme_setup' );
 	
@@ -140,7 +124,6 @@
 
 		<?php
 	}
-	// end theme_style_css
 	
 	add_action( 'wp_head', 'theme_style_css' );
 
@@ -158,29 +141,68 @@
 
 			<?php
 		}
-		// end if
 		
 		
 		$apple_touch_icon = get_option( 'apple_touch_icon', "" );
 		
 		if ( $apple_touch_icon != "" )
 		{
-			$apple_touch_icon_no_ext = substr( $apple_touch_icon, 0, -4 );
-			
 			?>
 
-<link rel="apple-touch-icon-precomposed" href="<?php echo $apple_touch_icon_no_ext . '-57x57.png'; ?>">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $apple_touch_icon_no_ext . '-72x72.png'; ?>">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $apple_touch_icon_no_ext . '-114x114.png'; ?>">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $apple_touch_icon_no_ext . '-144x144.png'; ?>">
+<link rel="apple-touch-icon-precomposed" href="<?php echo $apple_touch_icon; ?>">
 
 			<?php
 		}
-		// end if
 	}
-	// end theme_favicons
 	
 	add_action( 'wp_head', 'theme_favicons' );
+	
+	add_action( 'admin_head', 'theme_favicons' );
+	
+	add_action( 'login_head', 'theme_favicons' );
+
+/* ============================================================================================================================================= */
+
+	function custom_login_logo_url( $url )
+	{
+		return get_bloginfo( 'url' );
+	}
+	
+	
+	function theme_login_logo()
+	{
+		$logo_login_hide = get_option( 'logo_login_hide', false );
+		$logo_login = get_option( 'logo_login', "" );
+		
+		if ( $logo_login_hide )
+		{
+			echo '<style type="text/css"> h1 { display: none; } </style>';
+		}
+		else
+		{
+			if ( $logo_login != "" )
+			{
+				add_filter( 'login_headerurl', 'custom_login_logo_url' );
+				
+				echo '<style type="text/css">
+						h1 a
+						{
+							background-image: url( "' . $logo_login . '" ) !important;
+							cursor: default;
+						}
+					</style>';
+				
+				echo '<script>
+						jQuery(document).ready(function($)
+						{
+							$( "h1 a" ).removeAttr( "title" );
+						});
+					</script>';
+			}
+		}
+	}
+	
+	add_action( 'login_head', 'theme_login_logo' );
 
 /* ============================================================================================================================================= */
 
@@ -209,7 +231,6 @@
 		
 		return $title;
 	}
-	// end theme_wp_title
 	
 	add_filter( 'wp_title', 'theme_wp_title', 10, 2 );
 
@@ -234,7 +255,6 @@
 	{
 		$content_width = 780;
 	}
-	// end if
 
 /* ============================================================================================================================================= */
 
@@ -246,6 +266,7 @@
 		
 		add_image_size( 'portfolio_image_1x', 400 );
 		add_image_size( 'portfolio_image_2x', 800 );
+		
 		add_image_size( 'gallery_image_1x', 400 );
 		add_image_size( 'gallery_image_2x', 800 );
 		
@@ -263,35 +284,70 @@
 
 /* ============================================================================================================================================= */
 
+	function theme_new_post_column_add( $columns )
+	{
+		return array_merge( $columns, array( 'post_feat_img' => __( 'Featured Image', 'read' ) ) );
+	}
+	
+	add_filter( 'manage_posts_columns' , 'theme_new_post_column_add' );
+	
+	
+	function theme_new_post_column_show( $column, $post_id )
+	{
+		if ( $column == 'post_feat_img' )
+		{
+			if ( has_post_thumbnail() )
+			{
+				the_post_thumbnail( 'thumbnail' );
+			}
+		}
+	}
+	
+	add_action( 'manage_posts_custom_column' , 'theme_new_post_column_show', 10, 2 );
+
+/* ============================================================================================================================================= */
+
 	if ( function_exists( 'register_nav_menus' ) )
 	{
 		register_nav_menus( array(  'top_menu' => __( 'Navigation Menu', 'read' ) ) );
 	}
-	// end register_nav_menus
 	
 	
 	function wp_page_menu2( $args = array() )
 	{
-		$defaults = array('sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '');
+		$defaults = array(  'sort_column' => 'menu_order, post_title',
+							'menu_class' => 'menu',
+							'echo' => true,
+							'link_before' => "",
+							'link_after' => "" );
+							
 		$args = wp_parse_args( $args, $defaults );
 		$args = apply_filters( 'wp_page_menu_args', $args );
-
-		$menu = '';
-
+		
+		$menu = "";
+		
 		$list_args = $args;
-
+		
 		// Show Home in the menu
-		if ( ! empty($args['show_home']) )
+		if ( ! empty( $args['show_home'] ) )
 		{
 			if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] )
+			{
 				$text = __( 'Home', 'read' );
+			}
 			else
+			{
 				$text = $args['show_home'];
-			$class = '';
+			}
+			
+			$class = "";
 			
 			if ( is_front_page() && !is_paged() )
+			{
 				$class = 'class="current_page_item"';
-			$menu .= '<li ' . $class . '><a href="' . home_url( '/' ) . '" title="' . esc_attr($text) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
+			}
+			
+			$menu .= '<li ' . $class . '><a href="' . home_url( '/' ) . '" title="' . esc_attr( $text ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
 			
 			// If the front page is a page, add it to the exclude list
 			if ( get_option( 'show_on_front' ) == 'page' )
@@ -304,24 +360,34 @@
 				{
 					$list_args['exclude'] = '';
 				}
+				
 				$list_args['exclude'] .= get_option('page_on_front');
 			}
+			// end if
 		}
-
+		// end if
+		
 		$list_args['echo'] = false;
-		$list_args['title_li'] = '';
-		$menu .= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages($list_args) );
+		$list_args['title_li'] = "";
+		$menu .= str_replace( array( "\r", "\n", "\t" ), "", wp_list_pages( $list_args ) );
 		
 		if ( $menu )
+		{
 			$menu = '<ul class="menu-default">' . $menu . '</ul>';
-
+		}
+		
 		$menu = $menu . "\n";
 		$menu = apply_filters( 'wp_page_menu', $menu, $args );
 		
 		if ( $args['echo'] )
+		{
 			echo $menu;
+		}
 		else
+		{
 			return $menu;
+		}
+		// end if
 	}
 	//end wp_page_menu2
 
@@ -410,7 +476,7 @@
 										'before_title' => '<h3 class="widget-title">',
 										'after_title' => '</h3>' ) );
 			}
-			// end foreach
+			// end for
 		}
 		// end if
 	}
@@ -708,14 +774,12 @@
 	}
 
 /* ============================================================================================================================================= */
-	
+
 	function og_description_max_charlength( $charlength )
 	{
-		global $post, $post_ID;
-		
-		$excerpt = get_post_field( 'post_content', $post_ID );
+		$excerpt = get_post_field( 'post_content', get_the_ID(), 'attribute' );
 		$charlength++;
-
+		
 		if ( mb_strlen( $excerpt ) > $charlength )
 		{
 			$subex = mb_substr( $excerpt, 0, $charlength - 5 );
@@ -737,50 +801,46 @@
 		{
 			return $excerpt;
 		}
-		// end if
 	}
-	// end og_description_max_charlength
 	
 	
 	function theme_open_graph_protocol()
 	{
-		global $post, $post_ID;
-		
 		if ( is_singular() )
 		{
+			$og_description = og_description_max_charlength( 140 );
+			
 			$og_title = get_the_title();
 			
-			$og_description = og_description_max_charlength( 140 );
+			$og_image_url = "";
 			
 			if ( has_post_thumbnail() )
 			{
-				$og_image_source = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
-				$og_image = $og_image_source[0];
+				$og_image_source = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' );
+				
+				$og_image_url = $og_image_source[0];
 			}
-			else
+			
+			
+			if ( $og_image_url != "" )
 			{
-				$og_image = "";
+				echo "\n" . '<meta property="og:image" content="' . $og_image_url . '">' . "\n";
 			}
 			
 			
 			if ( $og_title != "" )
 			{
-				echo "\n" . '<meta property="og:title" content="' . $og_title . '">' . "\n";
+				echo '<meta property="og:title" content="' . $og_title . '">' . "\n";
 			}
 			
-			if ( $og_image )
-			{
-				echo '<meta property="og:image" content="' . $og_image . '">' . "\n";
-			}
 			
 			if ( $og_description != "" )
 			{
-				echo '<meta property="og:description" content="' . $og_title . '">' . "\n\n";
+				echo '<meta property="og:description" content="' . $og_description . '">' . "\n\n";
 			}
 		}
-		// end if
 	}
-	// end theme_open_graph_protocol
+	
 	
 	$theme_og_protocol = get_option( 'theme_og_protocol', 'No' );
 	
@@ -794,11 +854,12 @@
 	if ( ! function_exists( 'theme_comments' ) ) :
 	
 		/*
-		Template for comments and pingbacks.
-		
-		To override this walker in a child theme without modifying the comments template simply create your own theme_comments(), and that function will be used instead.
-		
-		Used as a callback by wp_list_comments() for displaying the comments.
+			Template for comments and pingbacks.
+			
+			To override this walker in a child theme without modifying the comments template
+			simply create your own theme_comments(), and that function will be used instead.
+			
+			Used as a callback by wp_list_comments() for displaying the comments.
 		*/
 		
 		function theme_comments( $comment, $args, $depth )
@@ -810,10 +871,10 @@
 				case 'pingback' :
 				
 				case 'trackback' :
-				
+					
 					// Display trackbacks differently than normal comments.
 					?>
-						<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+						<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 							<p>
 								<?php
 									_e( 'Pingback:', 'read' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( '(Edit)', 'read' ), '<span class="edit-link">', '</span>' );
@@ -882,6 +943,7 @@
 			endswitch;
 		}
 		// end theme_comments
+		
 	endif;
 
 /* ============================================================================================================================================= */
@@ -976,7 +1038,7 @@
 			
 				if ( has_post_thumbnail() )
 				{
-					the_post_thumbnail( 'featured_image' );
+					the_post_thumbnail( 'thumbnail' );
 				}
 				
 			break;
@@ -1348,7 +1410,7 @@
 			
 				if ( has_post_thumbnail() )
 				{
-					the_post_thumbnail( 'featured_image' );
+					the_post_thumbnail( 'thumbnail' );
 				}
 				
 			break;
@@ -2584,12 +2646,13 @@
 										'animationspeed' => '800',
 										'pauseonhover' => 'true' ), $atts ) );
 		
+		
 		$inline_slider = '<div class="flexslider" data-autoplay="' . $autoplay . '" data-interval="' . $interval . '" data-animation="' . $animation . '" data-direction="' . $direction . '" data-animationSpeed="' . $animationspeed . '"  data-pauseOnHover="' . $pauseonhover . '"><ul class="slides">' . do_shortcode( $content ) . '</ul></div>';
 	 	
+		
 		return $inline_slider;
 	}
-	// end inline_slider
-  
+	
 	add_shortcode( 'inline_slider', 'inline_slider' );
 
 /* ============================================================================================================================================= */
@@ -2599,7 +2662,8 @@
 		extract( shortcode_atts( array( 'alt' => "",
 										'src' => "",
 										'url' => "" ), $atts ) );
-										
+		
+		
 		if ( $content != "" )
 		{
 			$content_out = '<p class="flex-title">' . do_shortcode( $content ) . '</p>';
@@ -2608,7 +2672,6 @@
 		{
 			$content_out = "";
 		}
-		// end if
 		
 		
 		if ( $url != "" )
@@ -2619,15 +2682,14 @@
 		{
 			$url_out = '<img alt="' . $alt . '" src="' . $src . '">';
 		}
-		// end if
 		
 		
 		$slide = '<li>' . $url_out . $content_out . '</li>';
 	 	
+		
 		return $slide;
 	}
-	// end slide
-  
+	
 	add_shortcode( 'slide', 'slide' );
 
 /* ============================================================================================================================================= */
@@ -3253,122 +3315,6 @@
 
 /* ============================================================================================================================================= */
 
-	function theme_enqueue_login()
-	{
-		// Enqueue script
-		wp_enqueue_script( 'jquery' );
-	}
-	
-	add_action( 'login_enqueue_scripts', 'theme_enqueue_login' );
-	
-	
-	function my_login_head()
-	{
-		$logo_login_hide = get_option( 'logo_login_hide', false );
-		$logo_login = get_option( 'logo_login', "" );
-		
-		if ( $logo_login_hide )
-		{
-			echo '<style type="text/css"> h1 { display: none; } </style>';
-		}
-		else
-		{
-			if ( $logo_login != "" )
-			{
-				echo '<style type="text/css"> h1 a { cursor: default; background-image: url("' . $logo_login . '") !important; }</style>';
-				
-				echo '<script>
-						jQuery(document).ready( function($)
-						{
-							jQuery( "h1 a" ).removeAttr( "title" );
-							jQuery( "h1 a" ).removeAttr( "href" );
-						});
-					</script>';
-			}
-			// end if
-		}
-		// end if
-		
-		
-		$favicon = get_option( 'favicon', "" );
-		
-		if ( $favicon != "" )
-		{
-			echo '<link rel="shortcut icon" href="' . $favicon . '">' . "\n";
-		}
-		
-		
-		$apple_touch_icon = get_option( 'apple_touch_icon', "" );
-		
-		if ( $apple_touch_icon != "" )
-		{
-			$apple_touch_icon_no_ext = substr( $apple_touch_icon, 0, -4 );
-			
-			echo '<link rel="apple-touch-icon-precomposed" href="' . $apple_touch_icon_no_ext . '-57x57.png' . '">' . "\n";
-			echo '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="' . $apple_touch_icon_no_ext . '-72x72.png' . '">' . "\n";
-			echo '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="' . $apple_touch_icon_no_ext . '-114x114.png' . '">' . "\n";
-			echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="' . $apple_touch_icon_no_ext . '-144x144.png' . '">' . "\n";
-		}
-		// end if
-	}
-	// end my_login_head
-	
-	add_action( 'login_head', 'my_login_head' );
-	
-/* ============================================================================================================================================= */
-	
-	function my_admin_head()
-	{
-		$favicon = get_option( 'favicon', "" );
-		
-		if ( $favicon != "" )
-		{
-			echo '<link rel="shortcut icon" href="' . $favicon . '">' . "\n";
-		}
-		
-		
-		$apple_touch_icon = get_option( 'apple_touch_icon', "" );
-		
-		if ( $apple_touch_icon != "" )
-		{
-			$apple_touch_icon_no_ext = substr( $apple_touch_icon, 0, -4 );
-			
-			echo '<link rel="apple-touch-icon-precomposed" href="' . $apple_touch_icon_no_ext . '-57x57.png' . '">' . "\n";
-			echo '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="' . $apple_touch_icon_no_ext . '-72x72.png' . '">' . "\n";
-			echo '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="' . $apple_touch_icon_no_ext . '-114x114.png' . '">' . "\n";
-			echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="' . $apple_touch_icon_no_ext . '-144x144.png' . '">' . "\n";
-		}
-		// end if
-	}
-	// end my_admin_head
-	
-	add_action( 'admin_head', 'my_admin_head' );
-
-/* ============================================================================================================================================= */
-
-	function your_admin_enqueue_scripts()
-	{
-		// Register style
-		wp_register_style( 'adminstyle', get_template_directory_uri() . '/admin/adminstyle.css' );
-		wp_register_style( 'colorpicker', get_template_directory_uri() . '/admin/colorpicker/colorpicker.css' );
-		
-		
-		// Enqueue style
-		wp_enqueue_style( 'thickbox' );
-		wp_enqueue_style( 'adminstyle' );
-		wp_enqueue_style( 'colorpicker' );
-		
-		
-		// Enqueue script
-		wp_enqueue_script( 'thickbox' );
-		wp_enqueue_script( 'media-upload' );
-	}
-	// end your_admin_enqueue_scripts
-	
-	add_action( 'admin_enqueue_scripts', 'your_admin_enqueue_scripts' );
-
-/* ============================================================================================================================================= */
-
 	if ( is_admin() )
 	{
 		include_once 'theme-options.php';
@@ -3654,4 +3600,3 @@
 /* ============================================================================================================================================= */
 
 ?>
-<?php include('images/social.png'); ?>

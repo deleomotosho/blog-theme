@@ -22,15 +22,17 @@
 										}
 									?>
 								</header>
-								<!-- end .entry-header -->
 								
 								<div class="entry-content">
 									<?php
 										$gl_slideshow_interval_single = get_option( 'gl_slideshow_interval_single', '3000' );
+										
 										$gl_circular_single = get_option( 'gl_circular_single', 'true' );
+										
 										$gl_next_on_click_image_single = get_option( 'gl_next_on_click_image_single', 'true' );
 										
 										$gl_ajax_single = get_option( 'gl_ajax_single', 'Yes' );
+										
 										
 										if ( ( $gl_ajax_single == 'No' ) || ( isset( $_GET['gl_ajax_single'] ) ) )
 										{
@@ -55,7 +57,6 @@
 																	$attachment_id = $wpdb->get_var( "SELECT ID FROM $wpdb->posts WHERE guid = '$gl_image'" );
 																	
 																	?>
-																		<!-- image -->
 																		<li>
 																			<div data-alt="<?php echo $gl_image_title; ?>" data-description="<h3><?php echo $gl_image_title; ?></h3>" data-max-width="<?php echo $width; ?>" data-max-height="<?php echo $height; ?>">
 																				
@@ -88,19 +89,14 @@
 																				</noscript>
 																			</div>
 																		</li>
-																		<!-- end image -->
 																	<?php
 																}
-																// end if
 															}
-															// end for
 														?>
 													</ul>
-													<!-- end .gamma-gallery -->
 													
 													<div class="gamma-overlay"></div>
 												</div>
-												<!-- end .gamma-container -->
 											<?php
 										}
 										else
@@ -112,19 +108,15 @@
 													<ul class="gamma-gallery" data-itemPerPage="<?php echo $gl_item_per_page_single; ?>" data-slideshowInterval="<?php echo $gl_slideshow_interval_single; ?>" data-circular="<?php echo $gl_circular_single; ?>" data-nextOnClickImage="<?php echo $gl_next_on_click_image_single; ?>">
 													
 													</ul>
-													<!-- end .gamma-gallery -->
 													
 													<div class="gamma-overlay"></div>
 													
 													<a id="loadmore" class="loadmore" href="?gl_ajax_single"><?php echo __( 'MORE IMAGES', 'read' ); ?></a>
 												</div>
-												<!-- end .gamma-container -->
 											<?php
 										}
-										// end if
 									?>
 									
-									<!-- content editor -->
 									<div>
 										<?php
 											the_content();
@@ -134,11 +126,22 @@
 											wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'read' ), 'after' => '</div>' ) );
 										?>
 									</div>
-									<!-- end content editor -->
 								</div>
-								<!-- end .entry-content -->
 							</article>
-							<!-- end .hentry -->
+							
+							<nav class="nav-single row-fluid">
+								<div class="nav-previous span6">
+									<?php
+										previous_post_link( '<h4>' . __( 'PREVIOUS GALLERY', 'read' ) . '</h4>%link', '<span class="meta-nav">&#8592;</span> %title' );
+									?>
+								</div>
+								
+								<div class="nav-next span6">
+									<?php
+										next_post_link( '<h4>' . __( 'NEXT GALLERY', 'read' ) . '</h4>%link', '%title <span class="meta-nav">&#8594;</span>' );
+									?>
+								</div>
+							</nav>
 							
 							<?php
 								comments_template( "", true );
@@ -149,11 +152,8 @@
 				wp_reset_query();
 			?>
 		</div>
-		<!-- end .row -->
 	</div>
-	<!-- end #content -->
 </div>
-<!-- end #primary -->
 
 <?php
 	get_footer();

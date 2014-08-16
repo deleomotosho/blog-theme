@@ -1,11 +1,11 @@
 <?php
-	$blog_type = get_option( 'blog_type', 'Sidebar' );
+	$category_archive_type = get_option( 'category_archive_type', 'Masonry' );
 	
-	if ( $blog_type == 'No Sidebar' )
+	if ( $category_archive_type == 'No Sidebar' )
 	{
 		get_template_part( 'cat', 'nosidebar' );
 	}
-	elseif ( $blog_type == 'Masonry' )
+	elseif ( $category_archive_type == 'Masonry' )
 	{
 		get_template_part( 'cat', 'masonry' );
 	}

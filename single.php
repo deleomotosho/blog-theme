@@ -1,14 +1,12 @@
 <?php
-	if ( get_post_type() == 'post' )
+	$post_sidebar = get_option( 'post_sidebar', 'Yes' );
+	
+	if ( $post_sidebar == 'No' )
 	{
-		get_template_part( 'single', 'post' );
+		get_template_part( 'post', 'nosidebar' );
 	}
-	elseif ( get_post_type() == 'portfolio' )
+	else
 	{
-		get_template_part( 'single', 'portfolio' );
-	}
-	elseif ( get_post_type() == 'gallery' )
-	{
-		get_template_part( 'single', 'gallery' );
+		get_template_part( 'post', 'sidebar' );
 	}
 ?>

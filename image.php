@@ -1,31 +1,27 @@
 <?php
 	get_header();
 ?>
-                <!-- #primary -->
+
                 <div id="primary" class="site-content">
-                    <!-- #content -->
                     <div id="content" role="main">
-						<!-- .row -->
 						<div class="readable-content row-fluid page">
 							<?php
 								if ( have_posts() ) :
 									while ( have_posts() ) : the_post();
 										?>
-											<!-- .hentry -->
 											<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?>>
-												<!-- .entry-header -->
 												<header class="entry-header">
 													<h1 class="entry-title"><?php the_title(); ?></h1>
 												</header>
-												<!-- .entry-header -->
+												<!-- end .entry-header -->
 												
-												<!-- .nav-single -->
 												<nav class="nav-single row-fluid">
 													<div class="nav-previous span6">
 														<?php
 															previous_image_link( false, '<span class="meta-nav">&#8592; ' . __( 'PREVIOUS IMAGE', 'read' ) . '</span>' );
 														?>
 													</div>
+													
 													<div class="nav-next span6">
 														<?php
 															next_image_link( false, '<span class="meta-nav">' . __( 'NEXT IMAGE', 'read' ) . ' &#8594;</span>' );
@@ -91,7 +87,6 @@
 													<!-- .entry-attachment -->
 													
 													<div class="entry-description">
-													
 														<?php
 															the_content();
 														?>
@@ -99,7 +94,6 @@
 														<?php
 															wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'read' ), 'after' => '</div>' ) );
 														?>
-													
 													</div>
 													<!-- .entry-description -->
 												</div>
@@ -120,6 +114,7 @@
                     <!-- #content -->
                 </div>
                 <!-- #primary -->
+				
 <?php
 	get_footer();
 ?>

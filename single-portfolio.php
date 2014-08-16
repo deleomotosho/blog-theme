@@ -41,7 +41,6 @@
 										}
 									?>
 								</header>
-								<!-- end .entry-header -->
 								
 								<div class="entry-content">
 									<?php
@@ -52,11 +51,8 @@
 										wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'read' ), 'after' => '</div>' ) );
 									?>
 								</div>
-								<!-- end .entry-content -->
 							</article>
-							<!-- end .hentry -->
 							
-							<!-- .back-to-portfolio -->
 							<?php
 								$portfolio_slug = get_option( 'portfolio_slug', "" );
 								
@@ -69,14 +65,10 @@
 											<p class="launch-wrap">
 												<a href="<?php echo $back_to_portfolio_url; ?>"><?php echo __( 'BACK TO PORTFOLIO', 'read' ); ?></a>
 											</p>
-											<!-- end .launch-wrap -->
 										</div>
-										<!-- end .back-to-portfolio -->
 									<?php
 								}
-								// end if
 							?>
-							<!-- end .back-to-portfolio -->
 							
 							<nav class="nav-single row-fluid">
 								<div class="nav-previous span6">
@@ -91,7 +83,6 @@
 									?>
 								</div>
 							</nav>
-							<!-- end .nav-single -->
 							
 							<?php
 								comments_template( "", true );
@@ -102,11 +93,8 @@
 				wp_reset_query();
 			?>
 		</div>
-		<!-- end .row -->
 	</div>
-	<!-- end #content -->
 </div>
-<!-- end #primary -->
 
 <?php
 	get_footer();
