@@ -1,5 +1,5 @@
 {
-  "name": "delomos/read",
+  "name": "thoughtsatire/theme",
   "type": "wordpress-theme",
   "require": {
     "composer/installers": "~1.0.0"
