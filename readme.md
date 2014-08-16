@@ -1,1 +1,1 @@
-As seen on [Thought Satire](www.thoughtsatire.com)
+As seen on [Thought Satire](http://www.thoughtsatire.com)
