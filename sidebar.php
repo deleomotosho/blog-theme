@@ -10,7 +10,6 @@
 					endif;
 				?>
 			</div>
-			<!-- end #secondary -->
 		<?php
 	}
 	else
@@ -22,8 +21,6 @@
 					endif;
 				?>
 			</div>
-			<!-- end #secondary -->
 		<?php
 	}
-	// end if
 ?>

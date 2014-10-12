@@ -2,6 +2,7 @@
 	get_header();
 ?>
 
+
 <div id="primary" class="site-content">
 	<div id="content" role="main">
 		<div class="row-fluid page">
@@ -23,6 +24,7 @@
 									?>
 								</header>
 								
+								
 								<div class="entry-content">
 									<?php
 										$gl_slideshow_interval_single = get_option( 'gl_slideshow_interval_single', '3000' );
@@ -42,9 +44,11 @@
 														<?php
 															$gl_images_count =  get_option( $post->ID . 'gl_images_count', '0' );
 															
+															
 															for ( $i = 0; $i < $gl_images_count; $i++ )
 															{
 																$gl_image = stripcslashes( get_option( $post->ID . 'gl_image' . $i, "" ) );
+																
 																
 																if ( $gl_image != "" )
 																{
@@ -129,6 +133,7 @@
 								</div>
 							</article>
 							
+							
 							<nav class="nav-single row-fluid">
 								<div class="nav-previous span6">
 									<?php
@@ -143,6 +148,7 @@
 								</div>
 							</nav>
 							
+							
 							<?php
 								comments_template( "", true );
 							?>
@@ -154,6 +160,7 @@
 		</div>
 	</div>
 </div>
+
 
 <?php
 	get_footer();

@@ -8,6 +8,7 @@ Template Name: Gallery
 	get_header();
 ?>
 
+
 <div id="primary" class="site-content">
 	<div id="content" role="main">
 		<div class="row-fluid page">
@@ -15,7 +16,7 @@ Template Name: Gallery
 				<header class="entry-header">
 					<h1 class="entry-title"><?php single_post_title(); ?></h1>
 				</header>
-				<!-- end .entry-header -->
+				
 				
 				<div class="entry-content">
 					<?php
@@ -42,8 +43,8 @@ Template Name: Gallery
 								<!-- end page content -->
 							<?php
 						}
-						// end if
 					?>
+					
 					
 					<!-- gallery -->
 					<?php
@@ -77,9 +78,7 @@ Template Name: Gallery
 																	{
 																		the_post_thumbnail( 'gallery_image_1x', array( 'alt' => get_the_title(), 'title' => "" ) );
 																	}
-																	// end if
 																}
-																// end if
 															?>
 															
 															<div class="mask">
@@ -94,18 +93,14 @@ Template Name: Gallery
 																
 																<a href="<?php the_permalink(); ?>"></a>
 															</div>
-															<!-- end .mask -->
 														</div>
-														<!-- end .media-box -->
 													</div>
-													<!-- end gallery-item -->
 												<?php
 											endwhile;
 										endif;
 										wp_reset_query();
 									?>
 								</div>
-								<!-- end .portfolio-items -->
 							<?php
 						}
 						else
@@ -118,9 +113,9 @@ Template Name: Gallery
 								<a id="loadmore" class="loadmore" href="?gl_ajax"><?php echo __( 'MORE ITEMS', 'read' ); ?></a>	
 							<?php
 						}
-						// end if
 					?>
 					<!-- end gallery -->
+					
 					
 					<?php
 						if ( $gl_content_editor == 'Bottom' )
@@ -144,22 +139,18 @@ Template Name: Gallery
 								<!-- end page content -->
 							<?php
 						}
-						// end if
 					?>
 				</div>
-				<!-- end .entry-content -->
 			</article>
-			<!-- end .hentry -->
+			
 			
 			<?php
 				comments_template( "", true );
 			?>
 		</div>
-		<!-- end .row -->
 	</div>
-	<!-- end #content -->
 </div>
-<!-- end #primary -->
+
 
 <?php
 	get_footer();

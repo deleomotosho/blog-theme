@@ -2,6 +2,7 @@
 	get_header();
 ?>
 
+
 <div id="primary" class="site-content">
 	<div id="content" role="main">
 		<div class="blog-masonry">
@@ -29,15 +30,13 @@
 				wp_reset_query();
 			?>
 		</div>
-		<!-- end .blog-masonry -->
 		
 		<?php
 			get_template_part( 'part', 'pagination' );
 		?>
 	</div>
-	<!-- end #content -->
 </div>
-<!-- end #primary -->
+
 
 <?php
 	get_footer();

@@ -1,7 +1,6 @@
 			</div>
-			<!-- end .row .row-fluid -->
         </section>
-        <!-- end #main -->
+		
 		
         <footer class="site-footer wrapper" role="contentinfo">
 			<div class="row">
@@ -15,7 +14,6 @@
 						}
 					?>
 				</div>
-				<!-- end #supplementary -->
 				
 				<div class="site-info">
 					<?php
@@ -24,13 +22,10 @@
 						echo $copyright_text;
 					?>
 				</div>
-				<!-- end .site-info -->
 			</div>
-			<!-- end .row -->
         </footer>
-        <!-- end .site-footer -->
     </div>
-    <!-- end #PAGE -->
+	
 	
 	<?php
 		wp_footer();

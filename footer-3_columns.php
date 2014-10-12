@@ -4,7 +4,7 @@
 		endif;
 	?>
 </div>
-<!-- end .widget-area -->
+
 
 <div class="widget-area span4" role="complementary">
 	<?php
@@ -12,7 +12,7 @@
 		endif;
 	?>
 </div>
-<!-- end .widget-area -->
+
 
 <div class="widget-area span4" role="complementary">
 	<?php
@@ -20,4 +20,3 @@
 		endif;
 	?>
 </div>
-<!-- end .widget-area -->

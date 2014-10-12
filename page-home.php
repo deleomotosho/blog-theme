@@ -8,6 +8,7 @@ Template Name: Homepage
 	get_header();
 ?>
 
+
 <div id="primary" class="site-content">
 	<div id="content" role="main">
 		<div class="readable-content">
@@ -25,7 +26,8 @@ Template Name: Homepage
 					wp_reset_query();
 				?>
 			</article>
-			<!-- end page content -->
+			<!-- end Page Content -->
+			
 			
 			<div class="post-list">
 				<h2><?php echo get_the_title(); ?></h2>
@@ -48,41 +50,43 @@ Template Name: Homepage
 									{
 										?>
 											<li>
-												<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+												<h3>
+													<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+												</h3>
+												
 												<span class="date"><?php echo get_the_date(); ?></span>
 											</li>
 										<?php
 									}
-									// end if
 								}
 								else
 								{
 									?>
 										<li>
-											<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+											<h3>
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+											</h3>
+											
 											<span class="date"><?php echo get_the_date(); ?></span>
 										</li>
 									<?php
 								}
-								// end if
-								
+							
 							endwhile;
 						endif;
 						wp_reset_query();
 					?>
 				</ul>
 			</div>
-			<!-- end .post-list -->
+			
 			
 			<?php
 				comments_template( "", true );
 			?>
 		</div>
-		<!-- end .readable-content -->
 	</div>
-	<!-- end #content -->
 </div>
-<!-- end #primary -->
+
 
 <?php
 	get_footer();

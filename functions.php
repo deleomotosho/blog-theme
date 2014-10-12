@@ -1,6 +1,8 @@
 <?php
 
+
 /* ============================================================================================================================================= */
+
 
 	function theme_enqueue_login()
 	{
@@ -9,7 +11,9 @@
 	
 	add_action( 'login_enqueue_scripts', 'theme_enqueue_login' );
 
+
 /* ============================================================================================================================================= */
+
 
 	function your_admin_enqueue_scripts()
 	{
@@ -24,7 +28,9 @@
 	
 	add_action( 'admin_enqueue_scripts', 'your_admin_enqueue_scripts' );
 
+
 /* ============================================================================================================================================= */
+
 
 	function theme_enqueue()
 	{
@@ -63,7 +69,7 @@
 		wp_enqueue_style( 'google-code-prettify', get_template_directory_uri() . '/js/google-code-prettify/prettify.css', null, null );
 		wp_enqueue_style( 'uniform', get_template_directory_uri() . '/css/uniform.default.css', null, null );
 		wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/css/flexslider.css', null, null );
-		//wp_enqueue_style( 'mediaelementplayer', get_template_directory_uri() . '/js/mediaelement/mediaelementplayer.css', null, null );
+		// wp_enqueue_style( 'mediaelementplayer', get_template_directory_uri() . '/js/mediaelement/mediaelementplayer.css', null, null );
 		wp_enqueue_style( 'gamma-gallery', get_template_directory_uri() . '/css/gamma-gallery.css', null, null );
 		wp_enqueue_style( 'main', get_template_directory_uri() . '/css/main.css', null, null );
 		wp_enqueue_style( 'fancybox', get_template_directory_uri() . '/css/jquery.fancybox-1.3.4.css', null, null );
@@ -93,7 +99,9 @@
 		wp_enqueue_script( 'send-mail', get_template_directory_uri() . '/js/send-mail.js', null, null, true );
 	}
 
+
 /* ============================================================================================================================================= */
+
 
 	function my_theme_setup()
 	{
@@ -391,16 +399,20 @@
 	}
 	//end wp_page_menu2
 
+
 /* ============================================================================================================================================= */
+
 
 	function theme_excerpt_more( $more )
 	{
-		return '... <a class="more-link" href="'. get_permalink( get_the_ID() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'read' ) . '</a>';
+		return '... <a class="more-link" href="'. get_permalink( get_the_ID() ) . '">' . __( 'Continue reading <span class="meta-nav">&#8594;</span>', 'read' ) . '</a>';
 	}
 	
 	add_filter( 'excerpt_more', 'theme_excerpt_more' );
 
+
 /* ============================================================================================================================================= */
+
 
 	if ( function_exists( 'register_sidebar' ) )
 	{
@@ -476,13 +488,12 @@
 										'before_title' => '<h3 class="widget-title">',
 										'after_title' => '</h3>' ) );
 			}
-			// end for
 		}
-		// end if
 	}
-	// end register_sidebar
+
 
 /* ============================================================================================================================================= */
+
 
 	function my_meta_box_sidebar()
 	{
@@ -491,13 +502,17 @@
 		?>
 			<div class="admin-inside-box">
 				<input type="hidden" name="my_meta_box_sidebar_nonce" value="<?php echo wp_create_nonce( basename(__FILE__) ); ?>">
+				
+				
 				<h4>Select Sidebar</h4>
+				
 				<p>
 					<?php
 						$my_sidebar = get_option( $post->ID . 'my_sidebar', 'page_sidebar' );
 					?>
 					<select id="my_sidebar" name="my_sidebar" class="widefat">
 						<option <?php if ( $my_sidebar == 'page_sidebar' ) { echo 'selected="selected"'; } ?> value="page_sidebar"><?php echo __( 'Page Sidebar', 'read' ); ?></option>
+						
 						<option <?php if ( $my_sidebar == 'blog_sidebar' ) { echo 'selected="selected"'; } ?> value="blog_sidebar"><?php echo __( 'Blog Sidebar', 'read' ); ?></option>
 						
 						<?php
@@ -518,19 +533,18 @@
 									
 									echo '<option ' . $selected . ' value="' . $sidebar_name . '">' . $sidebar_name . '</option>';
 								}
-								// end foreach
 							}
-							// end if
 						?>
 					</select>
 				</p>
+				
+				
 				<p class="howto">
 					- Page with Sidebar template must be selected.<br><br>- To create a new sidebar go to:<br>Theme Options > Sidebar.
 				</p>
 			</div>
 		<?php
 	}
-	// end my_meta_box_sidebar
 	
 	function my_add_meta_box_sidebar()
 	{
@@ -570,11 +584,12 @@
 			update_option( $post->ID . 'my_sidebar', $_POST['my_sidebar'] );
 		}
 	}
-	// end my_save_meta_box_sidebar
 	
 	add_action( 'save_post', 'my_save_meta_box_sidebar' );
 
+
 /* ============================================================================================================================================= */
+
 
 	function my_meta_box_hide_post_title()
 	{
