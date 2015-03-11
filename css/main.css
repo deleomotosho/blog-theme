@@ -1,7 +1,8 @@
 /*
-	Name: Read WP
-	Description: Responsive Theme
-	Author: Pixelwars
+	Name: Read
+	Description: Responsive HTML5 Template
+	Version: 1.2
+	Author: pixelwars
 */
 
 
@@ -100,7 +101,7 @@ h1.site-title a:hover { color:#000; }
 
 /* SEARCH */
 #search-form { position:relative; }
-#search-form label { position:absolute; font-size:1em; top:0.09em; left:0; cursor:text; }
+#search-form label { position:absolute; font-size:1em; top:0; left:0; cursor:text; }
 #search-form label:hover { color:#777; } 
 #search-form #search { font-size:.9em; color:#888; width:50px; min-width:0; max-width: none; padding:3px 23px 3px 0; border:0; outline:0; background-color: transparent; -moz-box-sizing:content-box;-webkit-box-sizing:content-box;-ms-box-sizing:content-box;box-sizing:content-box; }
 #search-form #search:focus { color:#333; border-bottom:1px dotted #ccc; }

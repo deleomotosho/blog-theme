@@ -60,9 +60,11 @@
 		{
 			?>
 				<div class="featured-image">
-					<?php
-						the_post_thumbnail( 'blog_feat_img', array( 'alt' => get_the_title(), 'title' => "" ) );
-					?>
+					<a href="<?php the_permalink(); ?>">
+						<?php
+							the_post_thumbnail( 'blog_feat_img', array( 'alt' => get_the_title(), 'title' => "" ) );
+						?>
+					</a>
 				</div>
 			<?php
 		}

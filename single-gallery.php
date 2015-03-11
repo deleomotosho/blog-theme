@@ -45,7 +45,9 @@
 															$gl_images_count =  get_option( $post->ID . 'gl_images_count', '0' );
 															
 															
-															for ( $i = 0; $i < $gl_images_count; $i++ )
+															// for ( $i = 0; $i < $gl_images_count; $i++ )
+															
+															for ( $i = $gl_images_count; $i >= 0; $i-- )
 															{
 																$gl_image = stripcslashes( get_option( $post->ID . 'gl_image' . $i, "" ) );
 																
